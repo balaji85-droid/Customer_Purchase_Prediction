@@ -52,7 +52,6 @@ categorical_features = [
     'Designation'
 ]
 
-
 # Set the class weight to handle class imbalance
 class_weight = ytrain.value_counts()[0] / ytrain.value_counts()[1]
 class_weight
@@ -136,7 +135,7 @@ with mlflow.start_run():
     print(f"Model saved as artifact at: {model_path}")
 
     # Upload to Hugging Face
-    repo_id = "ramanub/tourism_prediction_model"
+    repo_id = "ramanub/Tourist-Prediction"
     repo_type = "model"
 
     # Step 1: Check if the space exists

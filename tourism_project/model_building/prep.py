@@ -16,11 +16,15 @@ DATASET_PATH = "hf://datasets/ramanub/Tourist-Prediction/tourism.csv"
 df = pd.read_csv(DATASET_PATH)
 print("Dataset loaded successfully.")
 
+# Drop the column Unnamed: 0
+df.drop(columns=['Unnamed: 0'], inplace=True)
+
 # Drop the unique identifier
 df.drop(columns=['CustomerID'], inplace=True)
 
-# Encoding the categorical column
-label_encoder = LabelEncoder()
+# Clean
+df['Gender'] = df['Gender'].replace('Fe Male', 'Female')
+df['MaritalStatus'] = df['MaritalStatus'].replace('Unmarried', 'Single')
 
 target_col = 'ProdTaken'
 

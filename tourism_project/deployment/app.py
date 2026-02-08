@@ -4,7 +4,7 @@ from huggingface_hub import hf_hub_download
 import joblib
 
 # Download and load the model
-model_path = hf_hub_download(repo_id="best_tourism_prediction_model_v1.joblib", filename="best_tourism_prediction_model_v1.joblib")
+model_path = hf_hub_download(repo_id="ramanub/Tourist-Prediction", filename="best_tourism_prediction_model_v1.joblib")
 model = joblib.load(model_path)
 
 # Streamlit UI for Machine Failure Prediction
@@ -19,7 +19,7 @@ st.subheader("Customer Information")
 
 Age = st.number_input("Age", min_value=18, max_value=100, value=35, step=1)
 Gender = st.selectbox("Gender", ["Male", "Female"])
-MaritalStatus = st.selectbox("Marital Status", ["Single", "Married", "Unmarried", "Divorced"])
+MaritalStatus = st.selectbox("Marital Status", ["Single", "Married", "Divorced"])
 Occupation = st.selectbox("Occupation", ["Salaried", "Small Business", "Large Business", "Free lancer"])
 MonthlyIncome = st.number_input("Monthly Income ($)", min_value=0, max_value=1000000, value=50000, step=1000)
 Designation = st.text_input("Designation", ["Executive", "Manager", "Senior Manager", "AVP", "VP"])
@@ -29,12 +29,12 @@ st.subheader("Location & Family Details")
 CityTier = st.selectbox("City Tier", [1, 2, 3])
 NumberOfPersonVisiting = st.number_input("Number of Persons Visiting", min_value=1, max_value=10, value=2, step=1)
 NumberOfChildrenVisiting = st.number_input("Number of Children Visiting", min_value=0, max_value=5, value=0, step=1)
-OwnCar = st.number_input("Owns a Car", min_value=0, max_value=1, value=0, step=1)
+OwnCar = st.toggle("Owns a Car")
 
 st.subheader("Travel History")
 
 NumberOfTrips = st.number_input("Number of Trips (Annual)", min_value=0, max_value=50, value=3, step=1)
-Passport = st.number_input("Passport", min_value=0, max_value=1, value=0, step=1)
+Passport = st.toggle("Has Passport")
 PreferredPropertyStar = st.slider("Preferred Hotel Star Rating", min_value=3, max_value=5, value=3, step=1)
 
 st.subheader("Sales Interaction Details")
@@ -59,9 +59,9 @@ input_data = pd.DataFrame([{
     'PreferredPropertyStar': PreferredPropertyStar,
     'MaritalStatus': MaritalStatus,
     'NumberOfTrips': NumberOfTrips,
-    'Passport': Passport,
+    'Passport': int(Passport), # True/False into int
     'PitchSatisfactionScore': PitchSatisfactionScore,
-    'OwnCar': OwnCar,
+    'OwnCar': int(OwnCar), # True/False into int
     'NumberOfChildrenVisiting': NumberOfChildrenVisiting,
     'Designation': Designation,
     'MonthlyIncome': MonthlyIncome
