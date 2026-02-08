@@ -22,7 +22,7 @@ Gender = st.selectbox("Gender", ["Male", "Female"])
 MaritalStatus = st.selectbox("Marital Status", ["Single", "Married", "Divorced"])
 Occupation = st.selectbox("Occupation", ["Salaried", "Small Business", "Large Business", "Free lancer"])
 MonthlyIncome = st.number_input("Monthly Income ($)", min_value=0, max_value=1000000, value=50000, step=1000)
-Designation = st.text_input("Designation", ["Executive", "Manager", "Senior Manager", "AVP", "VP"])
+Designation = st.selectbox("Designation", ["Executive", "Manager", "Senior Manager", "AVP", "VP"])
 
 st.subheader("Location & Family Details")
 
