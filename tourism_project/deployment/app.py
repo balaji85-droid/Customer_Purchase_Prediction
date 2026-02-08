@@ -8,7 +8,7 @@ model_path = hf_hub_download(repo_id="ramanub/Tourist-Prediction", filename="bes
 model = joblib.load(model_path)
 
 # Streamlit UI for Machine Failure Prediction
-st.title("Tour Pack Purchase Prediction App")
+st.title("Visit With Us Tour Pack Purchase Prediction App")
 st.write("""
 This application predicts whether a customer will purchase the newly introduced Wellness Tourism Package or not.
 Please enter the customer details below to get a prediction.
@@ -68,7 +68,7 @@ input_data = pd.DataFrame([{
 }])
 
 
-if st.button("Predict Failure"):
+if st.button("Predict Customer Decision"):
     prediction = model.predict(input_data)[0]
     result = "Tour Pack Taken" if prediction == 1 else "Tour Pack Not Taken"
     st.subheader("Prediction Result:")
